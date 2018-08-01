@@ -1,5 +1,7 @@
 package skeleton;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,15 +20,16 @@ public class LoginNewToursStepDefs {
 	    // Write code here that turns the phrase above into concrete actions
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://newtours.demoaut.com/");
+		driver.get("https://the-internet.herokuapp.com/login");
 	}
 
 	@When("^user enters correct crredentials in newtours$")
 	public void user_enters_correct_crredentials_in_newtours() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		driver.findElement(By.name("userName")).sendKeys("invalidUN");
-		driver.findElement(By.name("password")).sendKeys("invalidPW");
-		driver.findElement(By.name("login")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.findElement(By.name("username")).sendKeys("tomsmith");
+		driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
+		driver.findElement(By.xpath("//button[@class='radius']")).click();
 		
 	}
 
@@ -34,7 +37,7 @@ public class LoginNewToursStepDefs {
 	public void user_can_do_sucessful_login() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 		
-		Assert.assertEquals("Find a Flight: Mercury Tours:", driver.getTitle());
+		Assert.assertEquals("The Internet", driver.getTitle());
 		System.out.println("User can able to login the page sucessfully");
 	}
 
