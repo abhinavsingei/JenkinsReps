@@ -32,7 +32,7 @@ public class LoginNewToursStepDefs {
 		driver.findElement(By.xpath("//button[@class='radius']")).click();
 		
 	}
-
+	
 	@Then("^user can do sucessful login$")
 	public void user_can_do_sucessful_login() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
