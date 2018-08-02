@@ -29,14 +29,13 @@ public class LoginNewToursStepDefs {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.name("username")).sendKeys("tomsmith");
 		driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
-		driver.findElement(By.xpath("//button[@class='radius']")).click();
-		
+		driver.findElement(By.xpath("//button[@class='radius']")).click();	
 	}
 	
 	@Then("^user can do sucessful login$")
 	public void user_can_do_sucessful_login() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		
+	
 		Assert.assertEquals("The Internet", driver.getTitle());
 		System.out.println("User can able to login the page sucessfully");
 	}
